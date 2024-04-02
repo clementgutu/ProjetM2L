@@ -95,19 +95,6 @@ main>p {
     font-size:0.8rem;  
 }
 
-.button_user {
-    background-color: #d9534f ;
-    color: white;
-    padding: 0.45rem;
-    display: flex;
-    justify-content: center;
-    font-family: 'Arial', sans-serif;
-    font-size: 0.85rem
-}
-
-.button_user:hover {
-    background-color:#c9302c;
-}
 .say_hello>div{
     display: flex;
     justify-content: center;
