@@ -1,0 +1,51 @@
+/* Style for the login form */
+main {
+    max-width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.fs_connection {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+main h1 {
+    text-align: center;
+    color: #d9534f; /* Red color to match the header */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+    color: #333; /* Dark grey color for text */
+}
+
+form input[type="email"],
+form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 3px;
+}
+
+form input[type="submit"] {
+    padding: 10px;
+    background: #d9534f; /* Red background */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background: #c9302c; /* Darker red for hover effect */
+}

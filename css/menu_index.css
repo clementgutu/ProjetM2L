@@ -1,0 +1,64 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; 
+}
+
+/* Header and navigation styles */
+header{
+    display: flex; /* Utiliser flex pour un meilleur contrôle de l'alignement */
+    justify-content: space-between; /* Aligner les éléments sur les extrémités */
+    background-color: #d9534f; 
+    font-size: 1.2rem;             
+}
+
+/* marge img_intra */
+header>a.btn_intra>img {
+    margin-left: 1rem; /* Décaler le premier lien de 4/5 pixels vers la droite */ 
+    margin-right: 0.5rem; /* Créer un écart entre mon image-intra et le texte */
+}
+
+/* Personnalisation btn_intra */
+header>a {
+    display: flex;
+    align-items: center;
+    padding: 0.725rem 1rem 0.725rem 1rem;
+    color: white;
+    text-decoration: none;           
+}
+
+/* marge img_Connexion */
+header>nav>a.btn_connect>img {
+    margin-right: 0.15rem; 
+}
+
+/* Personnalisation btn_Connexion */
+nav>a {
+    display: flex;
+    align-items: center;    
+    padding: 0.6875rem;
+    text-decoration: none;            
+}    
+
+/* Couleur btn_Connexion */
+nav>a.btn_connect {
+    color: #fff;
+    background-color: rgb(201, 57, 57);
+}
+
+/* Transition btn_Intra */
+a.btn_intra:hover {    
+    background-color: rgb(219, 57, 57);
+    transition: 0.3s all ease-in-out;
+}
+
+/* Transition btn_Connexion */
+nav>a.btn_connect:hover, .btn-hb:hover {
+    background-color: rgb(185, 45, 45);
+    transition: all 0.3s ease-in-out;    
+}
+
+
+

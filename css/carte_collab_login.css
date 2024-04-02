@@ -1,0 +1,77 @@
+/* Centrer le texte*/
+main>h1 {
+    display: flex;   
+    justify-content: center;
+}
+main>p {
+    display: flex;   
+    justify-content: center;
+}
+.say_hello>p {
+    display: flex;   
+    justify-content: center;
+}
+
+/* Carte collaborateur*/
+.say_hello>figure {
+    display: flex;
+    justify-content:center;
+    align-items:center;   
+}
+
+/* Styles pour le pole_technique*/
+.pole_technique{
+    display: flex;
+    justify-content:right;
+    background-color:#5ba9fe;
+    color: white;
+    font-size: 0.8rem; 
+    padding: 0.2rem;
+}
+
+/* Centrer le nom_collab*/
+.nom_collab {
+    display: flex;
+    justify-content: center;    
+}
+
+/* Style pour l'age*/
+.age {
+    display: flex;
+    align-items: center;   
+    font-size: 0.8em; 
+    color: grey; 
+    margin-left: 0.5em; 
+}
+
+/* Style du lieu de naissance*/
+.lieu {
+    display: flex;
+    justify-content: center;
+
+    color: grey; 
+}
+
+/* Styles pour les liens*/
+.say_hello>figure>figcaption>ul>li>a {
+    color:#c5869d;    
+}
+
+/* Styles pour Anniversaire*/
+.say_hello>figure>figcaption>ul>li {
+    color:grey;
+    list-style: none;  
+}
+
+.button_user {
+    background-color: #d9534f ;
+    color: white;
+}
+
+.button_user:hover {
+    background-color:#c9302c;
+}
+
+
+
+
