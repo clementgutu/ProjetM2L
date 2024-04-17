@@ -74,3 +74,14 @@ header>nav>ul>li>a.btn_connect:hover, .btn-hb:hover {
     background-color: rgb(185, 45, 45);
     transition: all 0.3s ease-in-out;    
 }
+
+/* Transition btn_profil */
+header>nav>ul>li>a.profil_img:hover, .btn-hb:hover {
+    background-color: rgb(185, 45, 45);
+    transition: all 0.3s ease-in-out;    
+}
+
+/* Arrondir le btn_profil */
+header>nav>ul>li>a>img {
+    border-radius: 50%;
+}

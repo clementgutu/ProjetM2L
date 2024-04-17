@@ -92,7 +92,7 @@ main>p {
 .say_hello>figure>figcaption>ul>li {
     color:grey;
     list-style: none;
-    font-size:0.8rem;  
+    font-size:0.75rem;  
 }
 
 .button_user {
@@ -102,7 +102,7 @@ main>p {
     display: flex;
     justify-content: center;
     font-family: 'Arial', sans-serif;
-    font-size: 0.85rem
+    font-size: 0.85rem;   
 }
 
 .button_user:hover {
@@ -120,5 +120,6 @@ main>p {
 .boite{
     margin-right: 2.25rem;
 }
+
 
 
