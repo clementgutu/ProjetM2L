@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.titre {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.recherche {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.recherche input[type="search"], .recherche select {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.recherche button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.recherche button:hover {
+    background-color: #3e8e41;
+}
+
+.liste-collaborateurs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.carte-collaborateur {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 600px; /* Modifiez cette valeur pour ajuster la largeur de la carte collaborateur */
+    margin: 20px auto;
+}
+.carte-collaborateur .photo {
+width: 190px;
+height: 190px;
+margin-right: 20px;
+border-radius: 10px;
+overflow: hidden;
+}
+
+.carte-collaborateur .photo img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.carte-collaborateur .infos {
+flex: 1;
+
+}
+
+.carte-collaborateur .infos h2 {
+font-size: 24px;
+margin-bottom: 10px;
+}
+
+.carte-collaborateur .infos h2 .age {
+font-size: 18px;
+color: #666;
+font-style: italic;
+}
+
+.carte-collaborateur .infos .ville {
+font-size: 16px;
+color: #666;
+margin-bottom: 20px;
+}
+
+.carte-collaborateur .coordonnees {
+margin-bottom: 20px;
+}
+
+.carte-collaborateur .coordonnees p {
+font-size: 16px;
+margin-bottom: 16px;
+}
+
+.carte-collaborateur .coordonnees i {
+margin-right: 10px;
+}
+
+.carte-collaborateur .infos .profession {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 2px 5px;
+    border-radius: 5px;
+    width: 80px;
+    margin-left: auto;
+    margin-top: -20px;
+    margin-left: 83%;
+}

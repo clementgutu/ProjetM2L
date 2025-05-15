@@ -1,0 +1,13 @@
+/* Footer */
+.site-footer {
+    background-color: #e04444;
+    padding: 10px 20px;
+    text-align: center;
+    color: #fff;
+    clear: both;
+}
+
+.copyright {
+    font-size: 18px;
+    margin-bottom: 10px;
+}

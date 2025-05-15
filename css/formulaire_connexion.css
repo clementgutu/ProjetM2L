@@ -1,0 +1,77 @@
+/* Formulaire de connexion */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.login-screen {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.app-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.form-label {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #666;
+}
+
+.btn {
+    background-color: #e04444;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #c33;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px;
+    color: #666;
+}
+
+.login-link:hover {
+    color: #333;
+}

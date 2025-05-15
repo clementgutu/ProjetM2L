@@ -1,0 +1,43 @@
+#formulaire-modifier-profil {
+    width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#formulaire-modifier-profil h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.champ-formulaire {
+    margin-bottom: 20px;
+}
+
+.champ-formulaire label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.champ-formulaire input, .champ-formulaire select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#bouton-modifier {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#bouton-modifier:hover {
+    background-color: #3e8e41;
+}
