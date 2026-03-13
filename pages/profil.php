@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once '../src/database.php';
+require_once '../src/modifier_profil.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +11,7 @@
     <title>Intranet de l'entreprise</title>
     <link rel="stylesheet" href="../css/menu_connecter.css ">
     <link rel="stylesheet" href="../css/profil.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
     <!----------Menu---------->
@@ -30,44 +36,75 @@
         </nav>
     </header>
 
-    <form id="formulaire-modifier-profil">
+    <form action="../src/modifier_profil.php" method="POST" id="formulaire-modifier-profil">
         <h2>Modifier mon profil</h2>
+
         <div class="champ-formulaire">
-            <label for="civilité">Civilité :</label>
-            <select id="civilité" name="civilité">
-                <option value="homme">Homme</option>
-                <option value="femme">Femme</option>
+            <label for="civilite">Civilité :</label>
+            <select id="civilite" name="civilite" required>
+                <option value="M." <?= ($_SESSION['user']['civilite'] ?? '') === 'M.' ? 'selected' : '' ?>>M.</option>
+                <option value="Mme" <?= ($_SESSION['user']['civilite'] ?? '') === 'Mme' ? 'selected' : '' ?>>Mme</option>
+                <option value="Autre" <?= ($_SESSION['user']['civilite'] ?? '') === 'Autre' ? 'selected' : '' ?>>Autre</option>
             </select>
         </div>
-        <div class="champ-formulaire">
-            <label for="categorie">Catégorie :</label>
-            <select id="categorie" name="categorie">
-                <option value="cadre">Cadre</option>
-                <option value="technicien">Technicien</option>
-                <option value="ouvrier">Ouvrier</option>
-                <option value="employe">Employé</option>
-                <option value="stagiaire">Stagiaire</option>
-            </select>
-        </div>
-        <div class="champ-formulaire">
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" required>
-        </div>
+
         <div class="champ-formulaire">
             <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom" required>
+            <input type="text" id="prenom" name="prenom" value="<?= htmlspecialchars($_SESSION['user']['prenom']) ?>" required>
         </div>
+
+        <div class="champ-formulaire">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($_SESSION['user']['nom']) ?>" required>
+        </div>
+
         <div class="champ-formulaire">
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="<?= htmlspecialchars($_SESSION['user']['email']) ?>" required>
         </div>
+
         <div class="champ-formulaire">
-            <label for="mdp">Mot de passe :</label>
-            <input type="password" id="mdp" name="mdp" required>
+            <label for="telephone">Téléphone :</label>
+            <input type="text" id="telephone" name="telephone" value="<?= htmlspecialchars($_SESSION['user']['telephone']) ?>" required>
         </div>
+
         <div class="champ-formulaire">
-            <label for="confirmation">Confirmation du mot de passe :</label>
-            <input type="password" id="confirmation" name="confirmation" required>
+            <label for="ville">Ville :</label>
+            <input type="text" id="ville" name="ville" value="<?= htmlspecialchars($_SESSION['user']['ville']) ?>" required>
         </div>
+
+        <div class="champ-formulaire">
+            <label for="pays">Pays :</label>
+            <input type="text" id="pays" name="pays" value="<?= htmlspecialchars($_SESSION['user']['pays']) ?>" required>
+        </div>
+
+        <hr>
+        <h3>Changer le mot de passe (optionnel)</h3>
+
+        <div class="champ-formulaire">
+            <label for="ancien_mdp">Ancien mot de passe :</label>
+            <input type="password" id="ancien_mdp" name="ancien_mdp">
+        </div>
+
+        <div class="champ-formulaire">
+            <label for="nouveau_mdp">Nouveau mot de passe :</label>
+            <input type="password" id="nouveau_mdp" name="nouveau_mdp">
+        </div>
+
         <button type="submit" id="bouton-modifier">Modifier</button>
     </form>
+
+    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+        <div class="message-success">
+            ✅ Vos informations ont bien été mises à jour.
+        </div>
+    <?php endif; ?>
+
+
+    <footer class="site-footer">
+        <p class="copyright">&copy;Copyright M2L.</p>
+    </footer>
+
+</body>
+
+</html>

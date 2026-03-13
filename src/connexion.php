@@ -9,28 +9,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = isset($_POST['email']) ? $_POST['email'] : null;
     $mdp = isset($_POST['motdepasse']) ? $_POST['motdepasse'] : null;
 
-    // Préparer la requête
-    $stmt = $database->prepare("SELECT * FROM collaborateurs WHERE (email = :email) AND (motdepasse = :motdepasse)");
+    // Requête uniquement par email
+    $stmt = $database->prepare("SELECT * FROM collaborateurs WHERE email = :email");
     $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':motdepasse', $mdp);
 
-    try { //permet de contrôler les erreurs liées à l'exécution de la requête
+    try {
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        var_dump($user);
-
-        if ($user) {
-            // Si l'utilisateur est trouvé, on le connecte
+        if ($user && password_verify($mdp, $user['motdepasse'])) {
             session_start();
             $_SESSION['user'] = $user;
             header('Location: ./pages/acceuil.php');
             exit;
         } else {
-            // Si l'utilisateur n'est pas trouvé, on affiche un message d'erreur
             echo "❌ Identifiants incorrects";
         }
     } catch (PDOException $e) {
-        echo "❌ Erreur lors de la connexion : " . $e->getMessage();
+        echo "❌ Erreur : " . $e->getMessage();
     }
 }

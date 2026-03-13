@@ -85,3 +85,20 @@ margin-right: 10px;
     margin-top: -20px;
     margin-left: 83%;
 }
+
+.refresh-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.refresh-button:hover {
+    background-color: #3e8e41;
+}
+

@@ -1,6 +1,7 @@
 <?php
+session_start();
 require_once '../src/database.php';
-require_once '../src/all_collaborators.php';
+require_once '../src/filtre_collaborateurs.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,8 @@ require_once '../src/all_collaborators.php';
     <title>Intranet de l'entreprise</title>
     <link rel="stylesheet" href="../css/menu_connecter.css">
     <link rel="stylesheet" href="../css/liste.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 <body>
     <!----------Menu---------->
@@ -37,28 +40,31 @@ require_once '../src/all_collaborators.php';
 
     <h1 class="titre">Liste des collaborateurs</h1>
     
-    <div class="recherche">
-        <input type="search" id="recherche-input" placeholder="Rechercher...">
+    <form method="GET" class="recherche">
+        <input type="search" name="recherche" placeholder="Rechercher..." value="<?= htmlspecialchars($_GET['recherche'] ?? '') ?>">
+
         <span>Rechercher par :</span>
-        <select id="categorie-select">
-            <option value="aucun">Aucun</option>
-            <option value="nom">Nom</option>
-            <option value="prenom">Prénom</option>
-            <option value="service">Service</option>
-            <option value="email">Email</option>
+        <select name="categorie">
+            <option value="aucun" <?= ($_GET['categorie'] ?? '') === 'aucun' ? 'selected' : '' ?>>Aucun</option>
+            <option value="nom" <?= ($_GET['categorie'] ?? '') === 'nom' ? 'selected' : '' ?>>Nom</option>
+            <option value="prenom" <?= ($_GET['categorie'] ?? '') === 'prenom' ? 'selected' : '' ?>>Prénom</option>
+            <option value="profession" <?= ($_GET['categorie'] ?? '') === 'profession' ? 'selected' : '' ?>>Service</option>
+            <option value="email" <?= ($_GET['categorie'] ?? '') === 'email' ? 'selected' : '' ?>>Email</option>
         </select>
 
         <span>Catégories des salariés :</span>
-        <select id="categorie-salarie-select">
-            <option value="aucun">Aucun</option>
-            <option value="cadre">Cadre</option>
-            <option value="technicien">Technicien</option>
-            <option value="ouvrier">Ouvrier</option>
-            <option value="employe">Employé</option>
-            <option value="stagiaire">Stagiaire</option>
+        <select name="categorie_salarie">
+            <option value="aucun" <?= ($_GET['categorie_salarie'] ?? '') === 'aucun' ? 'selected' : '' ?>>Aucun</option>
+            <option value="cadre" <?= ($_GET['categorie_salarie'] ?? '') === 'cadre' ? 'selected' : '' ?>>Cadre</option>
+            <option value="technicien" <?= ($_GET['categorie_salarie'] ?? '') === 'technicien' ? 'selected' : '' ?>>Technicien</option>
+            <option value="ouvrier" <?= ($_GET['categorie_salarie'] ?? '') === 'ouvrier' ? 'selected' : '' ?>>Ouvrier</option>
+            <option value="employe" <?= ($_GET['categorie_salarie'] ?? '') === 'employe' ? 'selected' : '' ?>>Employé</option>
+            <option value="stagiaire" <?= ($_GET['categorie_salarie'] ?? '') === 'stagiaire' ? 'selected' : '' ?>>Stagiaire</option>
         </select>
-        <button id="recherche-btn">Rechercher</button>
-    </div>
+
+        <button type="submit">Rechercher</button>
+    </form>
+
     <!----------Carte collaborateur---------->
 
     <div class="liste-collaborateurs">
@@ -94,6 +100,13 @@ require_once '../src/all_collaborators.php';
         </div>
         
     <?php endforeach; ?>
+
+    </div>
+
+    <footer class="site-footer">
+        <p class="copyright">&copy;Copyright M2L.</p>
+    </footer>
+
 
 </body>
 </html>

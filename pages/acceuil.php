@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../src/database.php';
 require_once '../src/collaborateur.php';
 ?>
@@ -14,6 +15,7 @@ require_once '../src/collaborateur.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+    
     <header class="site-header">
         <nav class="main-nav">
             <div class="intranet">
@@ -51,8 +53,14 @@ require_once '../src/collaborateur.php';
         </div>
     </div>
 
+    <button onclick="location.reload()" class="refresh-button">
+        Avez-vous dit bonjour à :
+    </button>
+
+
     <footer class="site-footer">
         <p class="copyright">&copy;Copyright M2L.</p>
     </footer>
+
 </body>
 </html>
