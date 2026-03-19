@@ -11,9 +11,10 @@ $champsAutorises = ['prenom', 'nom', 'profession', 'email'];
 
 // Base de la requête SQL
 $sql = "
-    SELECT c.prenom, c.nom, c.email, c.telephone, c.pays, c.ville, c.date_de_naissance, c.profession, a.photo
+    SELECT c.prenom, c.nom, c.email, c.telephone, c.pays, c.ville, c.date_de_naissance, c.profession,
+           COALESCE(a.photo, 'asset/avatar_default.svg') AS photo
     FROM collaborateurs c
-    INNER JOIN avatars a ON c.id = a.collaborateur_id
+    LEFT JOIN avatars a ON c.id = a.collaborateur_id
     WHERE 1=1
 ";
 
