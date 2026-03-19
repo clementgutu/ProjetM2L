@@ -42,31 +42,31 @@ $currentPage = $currentPage ?? '';
         <div class="flex items-center justify-between h-16">
 
             <!-- Brand -->
-            <a href="./acceuil.php" class="flex items-center gap-3 group">
+            <a href="/ProjetM2L/pages/acceuil.php" class="flex items-center gap-3 group">
                 <div class="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-all">
-                    <img src="../asset/intra.png" alt="Logo" class="w-5 h-5 object-contain">
+                    <img src="/ProjetM2L/asset/intra.png" alt="Logo" class="w-5 h-5 object-contain">
                 </div>
                 <span class="font-bold text-white text-lg hidden sm:block tracking-tight">Intranet M2L</span>
             </a>
 
             <!-- Desktop nav -->
             <div class="hidden md:flex items-center gap-1">
-                <a href="./acceuil.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'acceuil' ? 'bg-white/20 text-white' : '' ?>">
+                <a href="/ProjetM2L/pages/acceuil.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'acceuil' ? 'bg-white/20 text-white' : '' ?>">
                     <i class="fas fa-home text-xs"></i> Accueil
                 </a>
-                <a href="./listes.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'listes' ? 'bg-white/20 text-white' : '' ?>">
+                <a href="/ProjetM2L/pages/listes.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'listes' ? 'bg-white/20 text-white' : '' ?>">
                     <i class="fas fa-users text-xs"></i> Collaborateurs
                 </a>
-                <a href="./profil.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'profil' ? 'bg-white/20 text-white' : '' ?>">
+                <a href="/ProjetM2L/pages/profil.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'profil' ? 'bg-white/20 text-white' : '' ?>">
                     <i class="fas fa-user-circle text-xs"></i> Mon profil
                 </a>
                 <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
-                <a href="./form_categorie.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'categories' ? 'bg-white/20 text-white' : '' ?>">
+                <a href="/ProjetM2L/pages/form_categorie.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'categories' ? 'bg-white/20 text-white' : '' ?>">
                     <i class="fas fa-tags text-xs"></i> Catégories
                 </a>
                 <?php endif; ?>
                 <div class="w-px h-5 bg-white/30 mx-2"></div>
-                <a href="./deconnexion.php" class="flex items-center gap-2 bg-white text-red-600 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm">
+                <a href="/ProjetM2L/pages/deconnexion.php" class="flex items-center gap-2 bg-white text-red-600 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm">
                     <i class="fas fa-right-from-bracket text-xs"></i> Déconnexion
                 </a>
             </div>
@@ -80,21 +80,21 @@ $currentPage = $currentPage ?? '';
 
         <!-- Mobile menu -->
         <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="md:hidden pb-4 border-t border-white/20 mt-1 pt-3 space-y-1" style="display:none">
-            <a href="./acceuil.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
+            <a href="/ProjetM2L/pages/acceuil.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
                 <i class="fas fa-home w-4 text-center"></i> Accueil
             </a>
-            <a href="./listes.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
+            <a href="/ProjetM2L/pages/listes.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
                 <i class="fas fa-users w-4 text-center"></i> Collaborateurs
             </a>
-            <a href="./profil.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
+            <a href="/ProjetM2L/pages/profil.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
                 <i class="fas fa-user-circle w-4 text-center"></i> Mon profil
             </a>
             <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
-            <a href="./form_categorie.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
+            <a href="/ProjetM2L/pages/form_categorie.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
                 <i class="fas fa-tags w-4 text-center"></i> Catégories
             </a>
             <?php endif; ?>
-            <a href="./deconnexion.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
+            <a href="/ProjetM2L/pages/deconnexion.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
                 <i class="fas fa-right-from-bracket w-4 text-center"></i> Déconnexion
             </a>
         </div>

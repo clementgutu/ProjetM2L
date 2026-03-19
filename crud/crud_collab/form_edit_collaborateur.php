@@ -1,10 +1,10 @@
 <?php
-require_once '../src/admin_check.php';
-require_once '../src/database.php';
+require_once '../../src/admin_check.php';
+require_once '../../src/database.php';
 
 $id = (int)($_GET['id'] ?? 0);
 if (!$id) {
-    header('Location: listes.php');
+    header('Location: /ProjetM2L/pages/listes.php');
     exit;
 }
 
@@ -13,13 +13,13 @@ $stmt->execute([':id' => $id]);
 $collab = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$collab) {
-    header('Location: listes.php');
+    header('Location: /ProjetM2L/pages/listes.php');
     exit;
 }
 
 $pageTitle   = 'Modifier collaborateur - Intranet M2L';
 $currentPage = 'listes';
-require_once '../includes/header_connected.php';
+require_once '../../includes/header_connected.php';
 
 $errors = [
     'champs'       => 'Tous les champs obligatoires doivent être remplis.',
@@ -33,7 +33,7 @@ $error = isset($_GET['error']) ? ($errors[$_GET['error']] ?? null) : null;
 <!-- Page header -->
 <div class="bg-white border-b border-gray-100">
     <div class="max-w-2xl mx-auto px-6 py-6 flex items-center gap-3">
-        <a href="./listes.php" class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center hover:bg-gray-200 transition-all text-gray-500">
+        <a href="/ProjetM2L/pages/listes.php" class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center hover:bg-gray-200 transition-all text-gray-500">
             <i class="fas fa-arrow-left text-sm"></i>
         </a>
         <div>
@@ -67,7 +67,7 @@ $error = isset($_GET['error']) ? ($errors[$_GET['error']] ?? null) : null;
             <h2 class="font-semibold text-gray-900">Informations personnelles</h2>
         </div>
 
-        <form action="../src/edit_collaborateur.php" method="POST" class="p-6 space-y-4">
+        <form action="edit_collaborateur.php" method="POST" class="p-6 space-y-4">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '') ?>">
             <input type="hidden" name="id" value="<?= $collab['id'] ?>">
 
@@ -154,4 +154,4 @@ $error = isset($_GET['error']) ? ($errors[$_GET['error']] ?? null) : null;
     </div>
 </div>
 
-<?php require_once '../includes/footer.php'; ?>
+<?php require_once '../../includes/footer.php'; ?>

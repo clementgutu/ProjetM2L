@@ -1,15 +1,15 @@
 <?php
-require_once '../src/admin_check.php';
-require_once __DIR__ . '/database.php';
+require_once '../../src/admin_check.php';
+require_once __DIR__ . '/../../src/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../pages/listes.php');
+    header('Location: /ProjetM2L/pages/listes.php');
     exit;
 }
 
 // Vérification CSRF
 if (empty($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $_POST['csrf_token'])) {
-    header('Location: ../pages/listes.php');
+    header('Location: /ProjetM2L/pages/listes.php');
     exit;
 }
 
@@ -25,21 +25,21 @@ $ville      = trim($_POST['ville']             ?? '');
 $pays       = trim($_POST['pays']              ?? '');
 
 if (!$id || empty($prenom) || empty($nom) || empty($email) || empty($telephone) || empty($profession)) {
-    header("Location: ../pages/form_edit_collaborateur.php?id=$id&error=champs");
+    header("Location: form_edit_collaborateur.php?id=$id&error=champs");
     exit;
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("Location: ../pages/form_edit_collaborateur.php?id=$id&error=email");
+    header("Location: form_edit_collaborateur.php?id=$id&error=email");
     exit;
 }
 
 try {
-    // Email unique (sauf pour lui-même)
+    // Email unique sauf pour lui-même
     $check = $database->prepare("SELECT id FROM collaborateurs WHERE email = :email AND id != :id LIMIT 1");
     $check->execute([':email' => $email, ':id' => $id]);
     if ($check->fetch()) {
-        header("Location: ../pages/form_edit_collaborateur.php?id=$id&error=email_existe");
+        header("Location: form_edit_collaborateur.php?id=$id&error=email_existe");
         exit;
     }
 
@@ -63,10 +63,10 @@ try {
         ':id'                => $id,
     ]);
 
-    header("Location: ../pages/form_edit_collaborateur.php?id=$id&success=1");
+    header("Location: form_edit_collaborateur.php?id=$id&success=1");
     exit;
 
 } catch (PDOException $e) {
-    header("Location: ../pages/form_edit_collaborateur.php?id=$id&error=serveur");
+    header("Location: form_edit_collaborateur.php?id=$id&error=serveur");
     exit;
 }
