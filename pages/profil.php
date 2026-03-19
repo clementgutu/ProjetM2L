@@ -1,6 +1,6 @@
 <?php
 require_once '../src/auth/auth_check.php';
-require_once '../src/modifier_profil.php';
+require_once '../src/crud/crud_collab/modifier_profil.php';
 $pageTitle   = 'Mon profil - Intranet M2L';
 $currentPage = 'profil';
 require_once '../includes/header_connected.php';
@@ -40,7 +40,7 @@ require_once '../includes/header_connected.php';
             </div>
             <h2 class="font-semibold text-gray-900">Informations personnelles</h2>
         </div>
-        <form action="../src/modifier_profil.php" method="POST" class="p-6 space-y-4">
+        <form action="../src/crud/crud_collab/modifier_profil.php" method="POST" class="p-6 space-y-4">
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Civilit&#233;</label>
@@ -119,7 +119,7 @@ require_once '../includes/header_connected.php';
                 <p class="text-xs text-gray-400">Optionnel &mdash; laissez vide pour ne pas modifier</p>
             </div>
         </div>
-        <form action="../src/modifier_profil.php" method="POST" class="p-6 space-y-4">
+        <form action="../src/crud/crud_collab/modifier_profil.php" method="POST" class="p-6 space-y-4">
             <div>
                 <label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Ancien mot de passe</label>
                 <div class="relative">

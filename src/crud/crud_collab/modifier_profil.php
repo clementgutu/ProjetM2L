@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/db/database.php';
+require_once __DIR__ . '/../../db/database.php';
 
 $userId = $_SESSION['user']['id'] ?? null;
 if (!$userId) {
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        header("Location: ../pages/profil.php?success=1");
+        header("Location: /ProjetM2L/pages/profil.php?success=1");
         exit;
     } catch (PDOException $e) {
         echo "❌ Erreur : " . $e->getMessage();
