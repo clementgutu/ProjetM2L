@@ -1,5 +1,6 @@
 # Fichiers sensibles / internes (logique métier admin)
 pages/form_categorie.php
+src/categories.php
 
 # Config base de données (contient les identifiants)
 src/database.php
