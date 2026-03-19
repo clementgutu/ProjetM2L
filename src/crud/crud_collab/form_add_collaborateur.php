@@ -1,8 +1,8 @@
 <?php
-require_once '../../src/admin_check.php';
+require_once '../../admin_check.php';
 $pageTitle   = 'Ajouter un collaborateur - Intranet M2L';
 $currentPage = 'listes';
-require_once '../../includes/header_connected.php';
+require_once '../../../includes/header_connected.php';
 
 $errors = [
     'champs'       => 'Tous les champs obligatoires doivent être remplis.',
@@ -128,4 +128,4 @@ $error = isset($_GET['error']) ? ($errors[$_GET['error']] ?? null) : null;
     </div>
 </div>
 
-<?php require_once '../../includes/footer.php'; ?>
+<?php require_once '../../../includes/footer.php'; ?>
