@@ -1,31 +1,47 @@
 <?php
-// Examens mdp hashé : $motdepasse = password_hash("123456", PASSWORD_DEFAULT);
-// Inclure le fichier de connexion à la base de données
-require_once 'database.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Récupérer les données du formulaire
+require_once __DIR__ . '/database.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = isset($_POST['email']) ? $_POST['email'] : null;
-    $mdp = isset($_POST['motdepasse']) ? $_POST['motdepasse'] : null;
+$erreur_connexion = null;
 
-    // Requête uniquement par email
-    $stmt = $database->prepare("SELECT * FROM collaborateurs WHERE email = :email");
-    $stmt->bindParam(':email', $email);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    try {
-        $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Vérification CSRF
+    if (empty($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $_POST['csrf_token'])) {
+        $erreur_connexion = "Requête invalide. Veuillez actualiser la page et réessayer.";
+    } else {
+        $email = trim($_POST['email'] ?? '');
+        $mdp   = $_POST['motdepasse'] ?? '';
 
-        if ($user && password_verify($mdp, $user['motdepasse'])) {
-            session_start();
-            $_SESSION['user'] = $user;
-            header('Location: ./pages/acceuil.php');
-            exit;
+        if (empty($email) || empty($mdp)) {
+            $erreur_connexion = "Veuillez remplir tous les champs.";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $erreur_connexion = "Adresse email invalide.";
         } else {
-            echo "❌ Identifiants incorrects";
+            try {
+                $stmt = $database->prepare("SELECT * FROM collaborateurs WHERE email = :email LIMIT 1");
+                $stmt->execute([':email' => $email]);
+                $user = $stmt->fetch();
+
+                if ($user && password_verify($mdp, $user['motdepasse'])) {
+                    session_regenerate_id(true);
+                    $_SESSION['user'] = $user;
+                    header('Location: acceuil.php');
+                    exit;
+                } else {
+                    $erreur_connexion = "Identifiants incorrects. Veuillez réessayer.";
+                }
+            } catch (PDOException $e) {
+                $erreur_connexion = "Erreur serveur. Veuillez réessayer plus tard.";
+            }
         }
-    } catch (PDOException $e) {
-        echo "❌ Erreur : " . $e->getMessage();
     }
+}
+
+// Génération du token CSRF (ou renouvellement)
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }

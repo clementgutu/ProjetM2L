@@ -1,112 +1,170 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f5f6fa;
     text-align: center;
 }
 
 .titre {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2c3e50;
     text-align: center;
-    margin-top: 20px;
+    margin: 30px 0 20px;
 }
 
 .recherche {
-    text-align: center;
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 0 auto 28px;
+    padding: 18px 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
 }
 
-.recherche input[type="search"], .recherche select {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.recherche span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+.recherche input[type="search"],
+.recherche select {
+    padding: 10px 14px;
+    border: 2px solid #e8e8e8;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fafafa;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+    font-family: inherit;
+    color: #2c3e50;
+}
+
+.recherche input[type="search"]:focus,
+.recherche select:focus {
+    border-color: #e04444;
+    box-shadow: 0 0 0 3px rgba(224, 68, 68, 0.12);
+    background-color: #fff;
 }
 
 .recherche button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #e04444 0%, #c0392b 100%);
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 10px rgba(224, 68, 68, 0.3);
+    font-family: inherit;
 }
 
 .recherche button:hover {
-    background-color: #3e8e41;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(224, 68, 68, 0.4);
 }
 
 .liste-collaborateurs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 16px;
+    padding: 0 20px 40px;
 }
 
 .carte-collaborateur {
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 600px; /* Modifiez cette valeur pour ajuster la largeur de la carte collaborateur */
-    margin: 20px auto;
-}
-.carte-collaborateur .photo {
-width: 190px;
-height: 190px;
-margin-right: 20px;
-border-radius: 10px;
-overflow: hidden;
+    width: 560px;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.carte-collaborateur .photo img {
-width: 100%;
-height: 100%;
-object-fit: cover;
+.carte-collaborateur:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.14);
+}
+
+.carte-collaborateur img.photo,
+.carte-collaborateur .photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-right: 20px;
+    background-color: #e8e8e8;
 }
 
 .carte-collaborateur .infos {
-flex: 1;
-
+    flex: 1;
+    position: relative;
 }
 
 .carte-collaborateur .infos h2 {
-font-size: 24px;
-margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: #2c3e50;
 }
 
 .carte-collaborateur .infos h2 .age {
-font-size: 18px;
-color: #666;
-font-style: italic;
+    font-size: 12px;
+    color: #aaa;
+    font-style: italic;
+    font-weight: 400;
 }
 
 .carte-collaborateur .infos .ville {
-font-size: 16px;
-color: #666;
-margin-bottom: 20px;
+    font-size: 13px;
+    color: #7f8c8d;
+    margin-bottom: 12px;
 }
 
 .carte-collaborateur .coordonnees {
-margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .carte-collaborateur .coordonnees p {
-font-size: 16px;
-margin-bottom: 16px;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+.carte-collaborateur .coordonnees p:last-child {
+    margin-bottom: 0;
 }
 
 .carte-collaborateur .coordonnees i {
-margin-right: 10px;
+    margin-right: 7px;
+    color: #e04444;
+    width: 14px;
+    text-align: center;
 }
 
 .carte-collaborateur .infos .profession {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 2px 5px;
-    border-radius: 5px;
-    width: 80px;
-    margin-left: auto;
-    margin-top: -20px;
-    margin-left: 83%;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    white-space: nowrap;
 }

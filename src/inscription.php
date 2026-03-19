@@ -1,42 +1,81 @@
 <?php
-// Inclure le fichier de connexion à la base de données
-require_once 'database.php';
-// Récupérer les données du formulaire
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $civilite = isset($_POST['civilite']) ? $_POST['civilite'] : null;
-    $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : null;
-    $nom = isset($_POST['nom']) ? $_POST['nom'] : null;
-    $email = isset($_POST['email']) ? $_POST['email'] : null;
-    $mdp = isset($_POST['motdepasse']) ? $_POST['motdepasse'] : null;
-    $telephone = isset($_POST['telephone']) ? $_POST['telephone'] : null;
-    $date_de_naissance = isset($_POST['date_de_naissance']) ? $_POST['date_de_naissance'] : null;
-    $pays = isset($_POST['pays']) ? $_POST['pays'] : null;
-    $ville = isset($_POST['ville']) ? $_POST['ville'] : null;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    // Hasher le mot de passe
-    $motdepasse = password_hash($mdp, PASSWORD_DEFAULT);
+require_once __DIR__ . '/database.php';
 
-    // Requête d'insertion
-    $stmt = $database->prepare("INSERT INTO collaborateurs (civilite, prenom, nom, email, motdepasse, telephone, date_de_naissance, pays, ville) VALUES (:civilite, :prenom, :nom, :email, :motdepasse, :telephone, :date_de_naissance, :pays, :ville)");
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header('Location: ../index.php');
+    exit;
+}
 
-    $stmt->bindParam(':civilite', $civilite);
-    $stmt->bindParam(':prenom', $prenom);
-    $stmt->bindParam(':nom', $nom);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':motdepasse', $motdepasse);
-    $stmt->bindParam(':telephone', $telephone);
-    $stmt->bindParam(':date_de_naissance', $date_de_naissance);
-    $stmt->bindParam(':pays', $pays);
-    $stmt->bindParam(':ville', $ville);
+// Vérification CSRF
+if (empty($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $_POST['csrf_token'])) {
+    header('Location: ../index.php?error=csrf');
+    exit;
+}
 
-    try {
-        $stmt->execute();
-        echo "Inscription réussie !";
-        // Redirection vers la page de connexion
-        header('Location: ../index.php');
+$civilite          = trim($_POST['civilite']          ?? '');
+$prenom            = trim($_POST['prenom']            ?? '');
+$nom               = trim($_POST['nom']               ?? '');
+$email             = trim($_POST['email']             ?? '');
+$mdp               = $_POST['motdepasse']             ?? '';
+$telephone         = trim($_POST['telephone']         ?? '');
+$date_de_naissance = !empty($_POST['date_de_naissance']) ? $_POST['date_de_naissance'] : null;
+$pays              = trim($_POST['pays']              ?? '');
+$ville             = trim($_POST['ville']             ?? '');
+
+// Validation basique
+if (empty($prenom) || empty($nom) || empty($email) || empty($mdp) || empty($telephone)) {
+    header('Location: ../index.php?error=champs');
+    exit;
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header('Location: ../index.php?error=email');
+    exit;
+}
+
+if (strlen($mdp) < 8) {
+    header('Location: ../index.php?error=mdp');
+    exit;
+}
+
+$motdepasse = password_hash($mdp, PASSWORD_DEFAULT);
+
+try {
+    // Vérification email unique
+    $check = $database->prepare("SELECT id FROM collaborateurs WHERE email = :email LIMIT 1");
+    $check->execute([':email' => $email]);
+    if ($check->fetch()) {
+        header('Location: ../index.php?error=email_existe');
         exit;
-
-    } catch (PDOException $e) {
-        echo "Erreur : " . $e->getMessage();
     }
+
+    $stmt = $database->prepare(
+        "INSERT INTO collaborateurs (civilite, prenom, nom, email, motdepasse, telephone, date_de_naissance, pays, ville)
+         VALUES (:civilite, :prenom, :nom, :email, :motdepasse, :telephone, :date_de_naissance, :pays, :ville)"
+    );
+    $stmt->execute([
+        ':civilite'          => $civilite,
+        ':prenom'            => $prenom,
+        ':nom'               => $nom,
+        ':email'             => $email,
+        ':motdepasse'        => $motdepasse,
+        ':telephone'         => $telephone,
+        ':date_de_naissance' => $date_de_naissance,
+        ':pays'              => $pays,
+        ':ville'             => $ville,
+    ]);
+
+    // Renouveler le token CSRF après inscription
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
+    header('Location: ../pages/connexion.php?registered=1');
+    exit;
+
+} catch (PDOException $e) {
+    header('Location: ../index.php?error=serveur');
+    exit;
 }

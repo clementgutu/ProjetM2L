@@ -1,0 +1,15 @@
+# Fichiers sensibles / internes
+src/auth_check.php
+pages/form_categorie.php
+
+# Config base de données (contient les identifiants)
+src/database.php
+
+# Dossier mémoire Claude
+.claude/
+
+# Divers
+*.log
+*.env
+.DS_Store
+Thumbs.db

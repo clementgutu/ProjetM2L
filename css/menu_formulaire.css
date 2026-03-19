@@ -1,4 +1,3 @@
-/* Réinitialisation des marges et du padding */
 * {
     margin: 0;
     padding: 0;
@@ -6,14 +5,13 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* Menu en haut */
 .site-header {
-    background-color: #e04444;
-    padding: 10px 20px;
-    text-align: center;
+    background: linear-gradient(135deg, #e04444 0%, #c0392b 100%);
+    padding: 14px 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .main-nav {
@@ -28,11 +26,12 @@ body {
     padding: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
 .nav-item {
-    margin-right: 20px;
+    margin-right: 12px;
 }
 
 .nav-item:last-child {
@@ -42,26 +41,24 @@ body {
 .nav-link {
     color: #fff;
     text-decoration: none;
-    font-size: 21px;
-    transition: color 0.2s ease;
+    font-size: 17px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .nav-link:hover {
-    color: #ccc;
+    opacity: 0.8;
 }
 
 .logo {
     height: 28px;
     width: auto;
-    margin-right: 8px;
-}
-
-.nav-item:first-child {
-    display: flex;
-    align-items: center;
 }
 
 .nav-item:first-child .nav-link {
-    display: flex;
-    align-items: center;
+    font-weight: 700;
+    font-size: 19px;
 }
