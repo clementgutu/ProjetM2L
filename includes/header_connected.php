@@ -66,7 +66,7 @@ $currentPage = $currentPage ?? '';
                 </a>
                 <?php endif; ?>
                 <div class="w-px h-5 bg-white/30 mx-2"></div>
-                <a href="/ProjetM2L/pages/deconnexion.php" class="flex items-center gap-2 bg-white text-red-600 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm">
+                <a href="/ProjetM2L/src/auth/deconnexion.php" class="flex items-center gap-2 bg-white text-red-600 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm">
                     <i class="fas fa-right-from-bracket text-xs"></i> Déconnexion
                 </a>
             </div>
@@ -94,7 +94,7 @@ $currentPage = $currentPage ?? '';
                 <i class="fas fa-tags w-4 text-center"></i> Catégories
             </a>
             <?php endif; ?>
-            <a href="/ProjetM2L/pages/deconnexion.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
+            <a href="/ProjetM2L/src/auth/deconnexion.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
                 <i class="fas fa-right-from-bracket w-4 text-center"></i> Déconnexion
             </a>
         </div>
