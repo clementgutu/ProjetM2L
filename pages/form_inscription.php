@@ -1,4 +1,4 @@
 <?php
-header("Location: ./connexion.php");
+header("Location: ./form_connexion.php");
 exit;
 ?>

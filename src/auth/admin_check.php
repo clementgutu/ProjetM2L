@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Pas connecté → page de connexion
 if (empty($_SESSION['user']) || !is_array($_SESSION['user'])) {
-    header('Location: ../pages/connexion.php');
+    header('Location: ../pages/form_connexion.php');
     exit;
 }
 

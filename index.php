@@ -19,7 +19,7 @@ $erreur_inscription = isset($_GET['error'], $erreurs[$_GET['error']]) ? $erreurs
 
 $basePath    = './';
 $pageTitle   = 'Inscription — Intranet M2L';
-$navLinkHref = './pages/connexion.php';
+$navLinkHref = './pages/form_connexion.php';
 $navLinkText = 'Se connecter';
 $navLinkIcon = 'fa-right-to-bracket';
 require_once 'includes/header_public.php';
@@ -309,7 +309,7 @@ label.lbl {
 
             <p class="text-center text-gray-500 text-sm">
                 Déjà un compte ?
-                <a href="./pages/connexion.php" class="text-red-600 font-semibold hover:text-red-700 transition-colors hover:underline">
+                <a href="./pages/form_connexion.php" class="text-red-600 font-semibold hover:text-red-700 transition-colors hover:underline">
                     Se connecter
                 </a>
             </p>

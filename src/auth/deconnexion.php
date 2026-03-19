@@ -14,5 +14,5 @@ if (ini_get("session.use_cookies")) {
 }
 session_destroy();
 
-header('Location: /ProjetM2L/pages/connexion.php?deconnecte=1');
+header('Location: /ProjetM2L/pages/form_connexion.php?deconnecte=1');
 exit;

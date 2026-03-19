@@ -76,7 +76,7 @@ try {
     // Renouveler le token CSRF après inscription
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-    header('Location: ../pages/connexion.php?registered=1');
+    header('Location: ../pages/form_connexion.php?registered=1');
     exit;
 
 } catch (PDOException $e) {
