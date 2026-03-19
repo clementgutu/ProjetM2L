@@ -1,6 +1,6 @@
 <?php
-require_once '../../admin_check.php';
-require_once '../../database.php';
+require_once '../../auth/admin_check.php';
+require_once '../../db/database.php';
 
 $id = (int)($_GET['id'] ?? 0);
 if (!$id) {

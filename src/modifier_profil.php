@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../src/database.php';
+require_once __DIR__ . '/db/database.php';
 
 $userId = $_SESSION['user']['id'] ?? null;
 if (!$userId) {

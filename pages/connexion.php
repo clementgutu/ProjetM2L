@@ -3,8 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../src/database.php';
-require_once '../src/connexion.php';
+require_once '../src/auth/connexion.php';
 
 $basePath    = '../';
 $pageTitle   = 'Connexion — Intranet M2L';

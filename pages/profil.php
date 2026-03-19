@@ -1,6 +1,5 @@
 <?php
-require_once '../src/auth_check.php';
-require_once '../src/database.php';
+require_once '../src/auth/auth_check.php';
 require_once '../src/modifier_profil.php';
 $pageTitle   = 'Mon profil - Intranet M2L';
 $currentPage = 'profil';

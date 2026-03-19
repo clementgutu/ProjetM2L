@@ -1,6 +1,6 @@
 <?php
-require_once '../../admin_check.php';
-require_once __DIR__ . '/../../database.php';
+require_once '../../auth/admin_check.php';
+require_once __DIR__ . '/../../db/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /ProjetM2L/pages/listes.php');

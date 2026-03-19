@@ -1,5 +1,5 @@
 <?php
-require_once '../../admin_check.php';
+require_once '../../auth/admin_check.php';
 $pageTitle   = 'Ajouter un collaborateur - Intranet M2L';
 $currentPage = 'listes';
 require_once '../../../includes/header_connected.php';
