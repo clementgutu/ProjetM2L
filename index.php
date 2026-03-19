@@ -253,6 +253,12 @@ label.lbl {
                     </div>
                 </div>
 
+                <!-- Profession -->
+                <div>
+                    <label class="lbl">Profession / Service</label>
+                    <input type="text" name="profession" placeholder="Ex : Technicien, Marketing..." required class="inp">
+                </div>
+
                 <!-- Téléphone -->
                 <div>
                     <label class="lbl">Téléphone</label>

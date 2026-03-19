@@ -25,9 +25,11 @@ $telephone         = trim($_POST['telephone']         ?? '');
 $date_de_naissance = !empty($_POST['date_de_naissance']) ? $_POST['date_de_naissance'] : null;
 $pays              = trim($_POST['pays']              ?? '');
 $ville             = trim($_POST['ville']             ?? '');
+$profession        = trim($_POST['profession']        ?? '');
+$role              = 'client'; // Toujours client à l'inscription
 
 // Validation basique
-if (empty($prenom) || empty($nom) || empty($email) || empty($mdp) || empty($telephone)) {
+if (empty($prenom) || empty($nom) || empty($email) || empty($mdp) || empty($telephone) || empty($profession)) {
     header('Location: ../index.php?error=champs');
     exit;
 }
@@ -54,8 +56,8 @@ try {
     }
 
     $stmt = $database->prepare(
-        "INSERT INTO collaborateurs (civilite, prenom, nom, email, motdepasse, telephone, date_de_naissance, pays, ville)
-         VALUES (:civilite, :prenom, :nom, :email, :motdepasse, :telephone, :date_de_naissance, :pays, :ville)"
+        "INSERT INTO collaborateurs (civilite, prenom, nom, email, motdepasse, telephone, date_de_naissance, pays, ville, profession, role)
+         VALUES (:civilite, :prenom, :nom, :email, :motdepasse, :telephone, :date_de_naissance, :pays, :ville, :profession, :role)"
     );
     $stmt->execute([
         ':civilite'          => $civilite,
@@ -67,6 +69,8 @@ try {
         ':date_de_naissance' => $date_de_naissance,
         ':pays'              => $pays,
         ':ville'             => $ville,
+        ':profession'        => $profession,
+        ':role'              => $role,
     ]);
 
     // Renouveler le token CSRF après inscription

@@ -60,6 +60,11 @@ $currentPage = $currentPage ?? '';
                 <a href="./profil.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'profil' ? 'bg-white/20 text-white' : '' ?>">
                     <i class="fas fa-user-circle text-xs"></i> Mon profil
                 </a>
+                <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
+                <a href="./form_categorie.php" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all text-white/85 hover:text-white hover:bg-white/15 <?= $currentPage === 'categories' ? 'bg-white/20 text-white' : '' ?>">
+                    <i class="fas fa-tags text-xs"></i> Catégories
+                </a>
+                <?php endif; ?>
                 <div class="w-px h-5 bg-white/30 mx-2"></div>
                 <a href="./deconnexion.php" class="flex items-center gap-2 bg-white text-red-600 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm">
                     <i class="fas fa-right-from-bracket text-xs"></i> Déconnexion
@@ -84,6 +89,11 @@ $currentPage = $currentPage ?? '';
             <a href="./profil.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
                 <i class="fas fa-user-circle w-4 text-center"></i> Mon profil
             </a>
+            <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
+            <a href="./form_categorie.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
+                <i class="fas fa-tags w-4 text-center"></i> Catégories
+            </a>
+            <?php endif; ?>
             <a href="./deconnexion.php" class="flex items-center gap-3 text-white hover:bg-white/15 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
                 <i class="fas fa-right-from-bracket w-4 text-center"></i> Déconnexion
             </a>

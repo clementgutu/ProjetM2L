@@ -1,5 +1,4 @@
-# Fichiers sensibles / internes
-src/auth_check.php
+# Fichiers sensibles / internes (logique métier admin)
 pages/form_categorie.php
 
 # Config base de données (contient les identifiants)
