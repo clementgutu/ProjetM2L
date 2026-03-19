@@ -1,6 +1,6 @@
 <?php
 require_once '../src/auth/auth_check.php';
-require_once '../src/db/filtre_collaborateurs.php';
+require_once '../src/collaborateurs/filtre_collaborateurs.php';
 $isAdmin     = ($_SESSION['user']['role'] ?? '') === 'admin';
 $pageTitle   = 'Collaborateurs - Intranet M2L';
 $currentPage = 'listes';

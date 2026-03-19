@@ -1,6 +1,6 @@
 <?php
 require_once '../src/auth/auth_check.php';
-require_once '../src/db/collaborateur.php';
+require_once '../src/collaborateurs/collaborateur.php';
 $pageTitle   = 'Accueil - Intranet M2L';
 $currentPage = 'acceuil';
 require_once '../includes/header_connected.php';

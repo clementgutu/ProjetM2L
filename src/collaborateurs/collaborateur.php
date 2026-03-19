@@ -1,6 +1,6 @@
 <?php
 // Inclusion du fichier de connexion à la BDD
-require_once 'database.php';
+require_once '../db/database.php';
 
 // Préparation de la requête
 $stmt = $database->prepare("

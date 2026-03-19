@@ -1,6 +1,6 @@
 # Fichiers sensibles / internes (logique métier admin)
 pages/form_categorie.php
-src/db/categories.php
+src/crud/crud_categorie/categories.php
 
 # Config base de données (contient les identifiants)
 src/db/database.php
