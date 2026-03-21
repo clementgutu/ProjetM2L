@@ -1,5 +1,5 @@
 <?php
-require_once '../db/database.php';
+require_once __DIR__ . '/../db/database.php';
 
 $searchTerm       = isset($_GET['recherche'])         ? trim($_GET['recherche'])        : '';
 $searchBy         = isset($_GET['categorie'])          ? $_GET['categorie']             : 'aucun';

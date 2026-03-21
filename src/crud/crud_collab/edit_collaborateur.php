@@ -25,12 +25,12 @@ $ville      = trim($_POST['ville']             ?? '');
 $pays       = trim($_POST['pays']              ?? '');
 
 if (!$id || empty($prenom) || empty($nom) || empty($email) || empty($telephone) || empty($profession)) {
-    header("Location: form_edit_collaborateur.php?id=$id&error=champs");
+    header("Location: /ProjetM2L/pages/form_edit_collaborateur.php?id=$id&error=champs");
     exit;
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("Location: form_edit_collaborateur.php?id=$id&error=email");
+    header("Location: /ProjetM2L/pages/form_edit_collaborateur.php?id=$id&error=email");
     exit;
 }
 
@@ -39,7 +39,7 @@ try {
     $check = $database->prepare("SELECT id FROM collaborateurs WHERE email = :email AND id != :id LIMIT 1");
     $check->execute([':email' => $email, ':id' => $id]);
     if ($check->fetch()) {
-        header("Location: form_edit_collaborateur.php?id=$id&error=email_existe");
+        header("Location: /ProjetM2L/pages/form_edit_collaborateur.php?id=$id&error=email_existe");
         exit;
     }
 
@@ -63,10 +63,10 @@ try {
         ':id'                => $id,
     ]);
 
-    header("Location: form_edit_collaborateur.php?id=$id&success=1");
+    header("Location: /ProjetM2L/pages/form_edit_collaborateur.php?id=$id&success=1");
     exit;
 
 } catch (PDOException $e) {
-    header("Location: form_edit_collaborateur.php?id=$id&error=serveur");
+    header("Location: /ProjetM2L/pages/form_edit_collaborateur.php?id=$id&error=serveur");
     exit;
 }

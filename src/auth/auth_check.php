@@ -5,6 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (empty($_SESSION['user'])) {
-    header('Location: ../pages/form_connexion.php');
+    header('Location: /ProjetM2L/pages/form_connexion.php');
     exit;
 }

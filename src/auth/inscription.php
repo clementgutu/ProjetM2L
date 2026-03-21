@@ -6,13 +6,13 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once __DIR__ . '/../db/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header('Location: ../index.php');
+    header('Location: /ProjetM2L/index.php');
     exit;
 }
 
 // Vérification CSRF
 if (empty($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $_POST['csrf_token'])) {
-    header('Location: ../index.php?error=csrf');
+    header('Location: /ProjetM2L/index.php?error=csrf');
     exit;
 }
 
@@ -30,17 +30,17 @@ $role              = 'client'; // Toujours client à l'inscription
 
 // Validation basique
 if (empty($prenom) || empty($nom) || empty($email) || empty($mdp) || empty($telephone) || empty($profession)) {
-    header('Location: ../index.php?error=champs');
+    header('Location: /ProjetM2L/index.php?error=champs');
     exit;
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header('Location: ../index.php?error=email');
+    header('Location: /ProjetM2L/index.php?error=email');
     exit;
 }
 
 if (strlen($mdp) < 8) {
-    header('Location: ../index.php?error=mdp');
+    header('Location: /ProjetM2L/index.php?error=mdp');
     exit;
 }
 
@@ -51,7 +51,7 @@ try {
     $check = $database->prepare("SELECT id FROM collaborateurs WHERE email = :email LIMIT 1");
     $check->execute([':email' => $email]);
     if ($check->fetch()) {
-        header('Location: ../index.php?error=email_existe');
+        header('Location: /ProjetM2L/index.php?error=email_existe');
         exit;
     }
 
@@ -76,10 +76,10 @@ try {
     // Renouveler le token CSRF après inscription
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-    header('Location: ../pages/form_connexion.php?registered=1');
+    header('Location: /ProjetM2L/pages/form_connexion.php?registered=1');
     exit;
 
 } catch (PDOException $e) {
-    header('Location: ../index.php?error=serveur');
+    header('Location: /ProjetM2L/index.php?error=serveur');
     exit;
 }

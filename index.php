@@ -192,7 +192,7 @@ label.lbl {
             <?php endif; ?>
 
             <!-- Form -->
-            <form action="src/inscription.php" method="POST" class="space-y-4" @submit.prevent="submitForm($event)">
+            <form action="src/auth/inscription.php" method="POST" class="space-y-4" @submit.prevent="submitForm($event)">
 
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
 

@@ -24,7 +24,7 @@ $baseQuery = $baseQuery ? '?' . $baseQuery . '&' : '?';
             </p>
         </div>
         <?php if ($isAdmin): ?>
-        <a href="../src/crud/crud_collab/form_add_collaborateur.php"
+        <a href="form_add_collaborateur.php"
            class="flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-500 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:from-red-700 hover:to-red-600 transition-all shadow-md shadow-red-100">
             <i class="fas fa-plus text-xs"></i> Ajouter
         </a>
@@ -141,7 +141,7 @@ $baseQuery = $baseQuery ? '?' . $baseQuery . '&' : '?';
                             </h3>
                             <?php if ($isAdmin): ?>
                             <div class="flex items-center gap-1 flex-shrink-0">
-                                <a href="../src/crud/crud_collab/form_edit_collaborateur.php?id=<?= $c['id'] ?>"
+                                <a href="form_edit_collaborateur.php?id=<?= $c['id'] ?>"
                                    title="Modifier"
                                    class="w-7 h-7 flex items-center justify-center rounded-lg bg-blue-50 text-blue-500 hover:bg-blue-100 transition-all">
                                     <i class="fas fa-pen text-xs"></i>
